@@ -1,10 +1,13 @@
-* Material list to build the Billarduino *
+# Material list to build the Billarduino
 
 
-Acquisition:
+## Hard Material
+- Wooden planks
+
+## Acquisition:
 - CMUcam5 PixyCam 1.3, 2013
 
-Remote control system :
+## Remote control system :
 - HC-06 Bluetooth
 - SONY Xperia M2 (Android Device)
 - "Bluetooth Electronics" Android application
