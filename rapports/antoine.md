@@ -19,7 +19,3 @@ On s'attend donc par déduction à ne pas choisir des objets de couleurs voisine
 # Séance du Lundi 10 Décembre (1)
 Le billard modèle réduit nous a été fourni par Monsieur Masson (évènement providentiel)
 Nous avons ensuite réalisé l'acquition des billes de billard dirèctement sur le tapis de jeu.
-
-
-
-![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/Screenshot%20from%202018-12-03%2015-50-08.png)
