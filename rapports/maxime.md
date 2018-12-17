@@ -6,7 +6,7 @@ Cela nous permettra pour les scéances futures d'identifier les différentes bou
 Schéma de l'acquisition des différents objets:
 
 
-
+![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/acquisition_tournevis.png)
 
 
 
