@@ -6,7 +6,7 @@ Ensuite, nous avons enseigné à la PixyCam des objets de différentes Formes / 
 - Tournevis rouge
 - Tournevis jaune
 - Pince vertes
-![alt text](Billarduino/rapports/images/Screenshot from 2018-12-03 15-50-08.png)
+![Screenshot](Billarduino/rapports/images/Screenshot%20from%202018-12-03%2015-50-08.png)
 Il est intéressant de remarquer qu'au niveau du Tournevis Rouge, on voit au niveau de la colerette jaune que la PixyCam croit détecter un "Tournevis Jaune"
 On s'attend donc par déduction à ne pas choisir des objets de couleurs voisines ou des objets multicolors, dans le potentiel risque d'avoir des problèmes d'acquisition.
 
