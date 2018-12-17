@@ -12,7 +12,7 @@ Ensuite, nous avons enseigné à la PixyCam des objets de différentes Formes / 
 - Tournevis jaune
 - Pince vertes
 
-![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/acquisition_bracelet.png)
+![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/acquisition_tournevis.png)
 
 Il est intéressant de remarquer qu'au niveau du Tournevis Rouge, on voit au niveau de la colerette jaune que la PixyCam croit détecter un "Tournevis Jaune"
 On s'attend donc par déduction à ne pas choisir des objets de couleurs voisines ou des objets multicolors, dans le potentiel risque d'avoir des problèmes d'acquisition.
@@ -23,7 +23,7 @@ Le billard modèle réduit nous a été fourni par Monsieur Masson (évènement 
 Nous avons ensuite réalisé l'acquition des billes de billard dirèctement sur le tapis de jeu.
 
 
-![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/billard_initial.png)
+![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/billard_initial.jpg)
 
 ![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/acquisition_bille.png)
 
