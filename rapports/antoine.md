@@ -55,3 +55,13 @@ De plus nous avons commencé à étudier le fonctionnement des moteurs pas à pa
 
 
 ![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/moteur_step.jpg)
+
+# Travail des vacances (noël)
+Gribouillage pour la confection du module basé sur 3 moteurs pas à pas (steppers) :
+- Translation (déplacement du module)
+- Rotation (pivot du module)
+- Translation (impact dans la bille avec relâchement du stepper)
+![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/50002E56-34F4-4C36-9A6F-B8EEDA670598.jpeg)
+Début de la rédaction de l'état de l´art
+Début de la rédaction du planning de répartition des tâches
+Ajouts dans la liste de matériel (maintenant plus complète)
