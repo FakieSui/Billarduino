@@ -24,5 +24,7 @@ En revanche, pour la fin de projet, le bille blanche pourra être placée sur un
 
 Séance du lundi 17 décembre (3):
 
-Lors de cette séance nous avons principalement trouvé les équations mathématiques qui nous permettrons de calculer les endroits précis d'impact voulu. Le principe est simple;
-à partir des coordonées de la bille blanche et de la bille objet (en deux dimension, coordonnées cartésiens)
+Lors de cette séance nous avons principalement trouvé les équations mathématiques qui nous permettrons de calculer les endroits précis d'impact voulu. Le principe est simple:
+à partir des coordonées de la bille blanche et de la bille objet (en deux dimension, coordonnées cartésiens), nous pouvons calculer les coordonnées de "tire", c'est à dire où exactement nous devons lancer la bille blanche. Cette position ne sera rien d'autre que le prolongement d'une distance du diamètre des boules du vecteur trou ---> bille objet en partant de la bille objet.
+Pour la rotation du module, c'est un simple calcul d'angle en fonctions des coordonnées des deux billes et du trou.
+Notre recherche est shématisé, 
