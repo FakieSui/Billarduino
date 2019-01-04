@@ -28,3 +28,7 @@ Lors de cette séance nous avons principalement trouvé les équations mathémat
 à partir des coordonées de la bille blanche et de la bille objet (en deux dimension, coordonnées cartésiens), nous pouvons calculer les coordonnées de "tire", c'est à dire où exactement nous devons lancer la bille blanche. Cette position ne sera rien d'autre que le prolongement d'une distance du diamètre des boules du vecteur trou ---> bille objet en partant de la bille objet.
 Pour la rotation du module, c'est un simple calcul d'angle en fonctions des coordonnées des deux billes et du trou.
 Notre recherche est schématisé, légendé et expliqué sur les photos ci-dessous.
+
+![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/calculs_angle_et_dist.jpg)
+
+![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/schema_billard.jpg)
