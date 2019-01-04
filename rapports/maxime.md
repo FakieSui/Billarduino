@@ -18,3 +18,11 @@ L'objectif est de pouvoir mettre une bille objet n'importe où dans le billard e
 Nous n'allons utiliser que deux trous sur les six trous du billard; deux trous d'extrémité.
 Nous nous sommes fixé comme objectif de mi-projet de prendre toujours la même position de la boule blanche.
 En revanche, pour la fin de projet, le bille blanche pourra être placée sur une ligne le long de la largeur du billard.
+
+![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/billard_initial.jpg)
+
+
+Séance du lundi 17 décembre (3):
+
+Lors de cette séance nous avons principalement trouvé les équations mathématiques qui nous permettrons de calculer les endroits précis d'impact voulu. Le principe est simple;
+à partir des coordonées de la bille blanche et de la bille objet (en deux dimension, coordonnées cartésiens)
