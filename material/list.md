@@ -3,6 +3,7 @@
 
 ## Hard Material
 - Wooden planks
+- PixyCam pole \[ \]
 
 ## Acquisition:
 - CMUcam5 PixyCam 1.3, 2013
