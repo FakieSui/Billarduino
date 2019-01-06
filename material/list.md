@@ -2,14 +2,15 @@
 
 
 ## Hard Material
-- Wooden planks
-- PixyCam pole \[ \]
+- Planches de bois
+- Perche PixyCam
+- Vis de fixation
 
 ## Acquisition:
 - CMUcam5 PixyCam 1.3, 2013
 
-## Motors:
-Depends on the billiard's width [  
+## Motors & rods:
+En fonction de la largeur du billard [  
 Nema17 + Threaded Shaft 300mm  
 https://www.banggood.com/fr/17HS4401-300-Nema17-Stepper-Motor-With-Stainless-Steel-8mm-300mm-Lead-Screw-p-1364955.html?rmmds=detail-left-hotproducts__5&HotRecToken=CgExEAIaAklWIgJQRCgB&cur_warehouse=CN  
 
