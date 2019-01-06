@@ -67,6 +67,31 @@ Gribouillage pour la confection du module basé sur 3 moteurs pas à pas (steppe
 - Rotation (pivot du module)
 - Translation (impact dans la bille avec relâchement du stepper)
 ![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/50002E56-34F4-4C36-9A6F-B8EEDA670598.jpeg)
-Début de la rédaction de l'état de l´art
-Début de la rédaction du planning de répartition des tâches
-Ajouts dans la liste de matériel (maintenant plus complète)
+Début de la rédaction de l'état de l'art  
+Début de la rédaction du planning de répartition des tâches  
+Ajouts dans la liste de matériel (maintenant plus complète)  
+
+
+## Accouplement Pixy Arduino
+
+Après avoir montré que l'on pouvait visionner l'identification des signatures sur le PC, il faut maintenant passer à un dialogue en canal direct Arduino-PixyCam, et voici le fruit de ce travail :
+
+![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/pixy_with_arduino.jpg)
+![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/pixy_to_arduino.png)
+
+A défaut d'avoir une accueil de fiche femelle ISCP sur la carte Atmel (fiche qui permet la connexion entre Arduino et PixyCam), on connecte la fiche à l'arduino à l'aide de fils males-males sur des pins biens précis, comme spécifié sur le document suivant :
+
+![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/iscp_connection.jpg)
+
+
+Ensuite, on lance le logiciel PixyCam, et ayant déjà défini les signatures précédemment, on passe le logiciel en mode "Default Program" pour que la PixyCam puisse transmettre les informations d'acquisition à l'Arduino. Sinon, la Pixy n'a pas assez de puissance pour transmettre un signal video et envoyé les informations à l'arduino !
+
+Après avoir pointé les deux billes de billard, voici le "var dump" (debug) de ce que contient de tableau de blocks (objets identifiés) :
+
+```
+Detected 2:
+  block 0: sig: 1 x: 37 y: 139 width: 46 height: 47
+  block 1: sig: 2 x: 276 y: 98 width: 51 height: 52
+```
+
+On nous dit bien en effet que deux blocks ont été détectés, puis on donne la liste de ceux ci ; on sait que la signature 1 correspond à la bille jaune et la 2 à la bleu (cf Séance du Lundi 10 Décembre). On peut récupérer les coordonnées (x, y) et la hauteur (height) et largeur (width) des objets identifiés
