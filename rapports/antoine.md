@@ -1,3 +1,8 @@
+# Rôle personnel :
+- Programmation de la PixyCam pour l'acquisition
+- Programmation de l'Arduino pour faire le lien entre l'acquisition video et les moteurs
+
+
 # Séance du Lundi 3 Décembre (1)
 
 Grâce à la PixyCam fourni la séance précédente, nous avons réalisé des acquisitions diverses des objets du laboratoire :
