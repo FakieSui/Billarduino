@@ -6,4 +6,4 @@ Il s´agit d'un "SELF-PLAYING BILLIARD" (billard qui joue tout seul)
 Le principe est identique au notre, mais est plus avancé :
 - le billard n´est composé que d'un pied pour permettre de déplacer un robot en rotation autours du billard et de s´affranchir du problème des quatre pieds
 - la pixycam (que nous utilisons également) est fixée sur le robot lui même est fait l´acquisition à la première personne
-- le billard est simplifié : il est composé de palets circulaires de couleurs uniformes de façon à facilité le travaille de la PixyCam
+- le billard est simplifié : il est composé de palets circulaires de couleurs uniformes de façon à facilité le travail de la PixyCam
