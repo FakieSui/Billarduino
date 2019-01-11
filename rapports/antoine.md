@@ -127,3 +127,11 @@ Ainsi, nous avons retaillé les tiges aux bonnes dimensions pour notre billard e
 Avec l'aide d'un ami sur Nice (Lyonnel Dahan), il nous a été possible de fabriquer à l'aide de bois de palette la PixyPole (perche pour la PixyCam). Il a été éprouvant en terme de conception d'ériger une perche stable, légèrement reglable la plus légère possible et la plus démontable possible.
 
 Après 6 heures de travail pour confectionner cette fameuse perche, nous obtenons un signal video sur l'ordinateur qui est digne d'un jeu de billard :
+
+![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/pictural_ball_scrap.png)
+
+
+Comme on l'a vu précédemment, il faut passer en mode "Raw" pour que la PixyCam envoie les informations des blocks en direct sur l'Arduino (qu'on affiche avec le Serial) :
+
+
+![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/pictural_ball_scrap.png)
