@@ -1,7 +1,8 @@
 # Rôle personnel :
 - Programmation de la PixyCam pour l'acquisition
 - Programmation de l'Arduino pour faire le lien entre l'acquisition video et les moteurs
-
+- Construction de la PixyPerche (featuring Lyonnel Dahan)
+- Construction du module + rail (featuring Lyonnel Dahan)
 
 # Séance du Lundi 3 Décembre (1)
 
@@ -16,6 +17,12 @@ Ensuite, nous avons enseigné à la PixyCam des objets de différentes Formes / 
 - Tournevis rouge
 - Tournevis jaune
 - Pince vertes
+
+Pour ce qui est de la manière de définir une signature, il faut tout d'abord brancher la PixyCam à l'ordinateur. On laisse ensuite son doigt appuyé sur le seul bouton de la PixyCam pour faire défiler les couleurs qui correspondent aux emplacements de signatures. Ainsi, on a un cycle de couleurs qui nous permet de choisir et de définir un total de 8 signatures. Voici donc les signatures que l'on définit :
+1 - Bille Jaune
+2 - Bille Bleue
+3 - Gommette 1 (point de référence 1)
+4 - Gommette 2 (point de référence 2)
 
 ![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/acquisition_tournevis.png)
 
@@ -46,7 +53,7 @@ Nous avons commencé à étudier concrètement comment le projet fonctionnera, c
 
 # Séance du Lundi 17 Décembre (3)
 
-Nous avons accueilli Mattéo, 13 ans, qui a été à l'origine d'un déficit de temps sur la séance
+Nous avons accueilli Mattéo, 13 ans, qui a été à l'origine d'un déficit de temps sur la séance.
 Cependant, nous avons étudié les formules permettant de déterminer les informations clés à la préparation du tir (soit [PHI, L])
 
 Voici sur la feuille suivante l'ensemble des calculs qui ont fait l'objet de notre travail (aucun résultat sur internet n'a été trouvé)
@@ -95,3 +102,28 @@ Detected 2:
 ```
 
 On nous dit bien en effet que deux blocks ont été détectés, puis on donne la liste de ceux ci ; on sait que la signature 1 correspond à la bille jaune et la 2 à la bleu (cf Séance du Lundi 10 Décembre). On peut récupérer les coordonnées (x, y) et la hauteur (height) et largeur (width) des objets identifiés
+
+# Séance du Lundi 7 Janvier (4)
+
+Objectif de la séance : Récupérer le maximum de matériel pour la fabriquation du module queue-de-billard sur le rail.
+
+Durant cette séance, Monsieur Masson nous a régalé en nous fournissant 99.9%  de ce qu'il nous fallait à savoir :
+- Une tige filetée
+- Une tige coulissante
+- Un écrou (pour la tige filetée)
+- Une prise à roulement (pour la tige filetée)
+- Deux fixations (pour la tige coulissante)
+- Un coulisseau (pour la tige coulissante)
+- Un moteur pas à pas 12V Nema 17
+- Un coupleur (pour le moteur)
+
+Le seule élément manquant est le driver pour le moteur Nema 17.
+
+Ainsi, nous avons retaillé les tiges aux bonnes dimensions pour notre billard en coupant large (45cm contre 31.6cm pour la largeur du billard) pour pouvoir tirer avec les angles les plus extrêmes. En effet, lorsque le module qui coulisse se trouve en butée, il faut compter la demi largeur du module ainsi que le décalage pour donner le coup de queue dans le bon angle.
+
+
+# Travail d'un Jeudi 10 Janvier
+
+Avec l'aide d'un ami sur Nice (Lyonnel Dahan), il nous a été possible de fabriquer à l'aide de bois de palette la PixyPole (perche pour la PixyCam). Il a été éprouvant en terme de conception d'ériger une perche stable, légèrement reglable la plus légère possible et la plus démontable possible.
+
+Après 6 heures de travail pour confectionner cette fameuse perche, nous obtenons un signal video sur l'ordinateur qui est digne d'un jeu de billard :
