@@ -134,4 +134,4 @@ Après 6 heures de travail pour confectionner cette fameuse perche, nous obtenon
 Comme on l'a vu précédemment, il faut passer en mode "Raw" pour que la PixyCam envoie les informations des blocks en direct sur l'Arduino (qu'on affiche avec le Serial) :
 
 
-![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/pictural_ball_scrap.png)
+![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/raw_ball_scrap.png)
