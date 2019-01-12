@@ -79,7 +79,7 @@ Début de la rédaction du planning de répartition des tâches
 Ajouts dans la liste de matériel (maintenant plus complète)  
 
 
-## Accouplement Pixy Arduino
+## Appairage Pixy-Arduino
 
 Après avoir montré que l'on pouvait visionner l'identification des signatures sur le PC, il faut maintenant passer à un dialogue en canal direct Arduino-PixyCam, et voici le fruit de ce travail :
 
@@ -131,7 +131,22 @@ Après 6 heures de travail pour confectionner cette fameuse perche, nous obtenon
 ![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/pictural_ball_scrap.png)
 
 
-Comme on l'a vu précédemment, il faut passer en mode "Raw" pour que la PixyCam envoie les informations des blocks en direct sur l'Arduino (qu'on affiche avec le Serial) :
+Comme on l'a vu précédemment, il faut passer en mode "Raw" pour que la PixyCam envoie les informations des blocks en direct sur l'Arduino (qu'on affiche via le Serial) :
 
 
 ![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/raw_ball_scrap.png)
+
+Côté programme, il nous suffira d'établir une échelle pour savoir combien représente une mesure réelle par rapport à une mesure de la PixyCam.
+
+# Travail d'un Vendredi 11 Janvier
+
+Après la PixyPole, c'est au tour du module avec la pseudo-queue de billard d'être usinée ; la fabrication suit les idées du gribouillage, moyennant quelques rectifications :
+- L'elastique est fixé directement sur le coulisseau
+- On tire la tige (qui fait office de queue) pour armer le coup
+- Il n'est plus question de courroie mais de tige filetée (avec le moteur Nema 17 au bout)
+
+Il faut donc intégrer le petit moteur step au module pour ce qui est de la rotation, avec le coulisseau parfaitement dans l'axe du pan du moteur. Pour cela, nous avons fait mes marquages et travaillé précisément au foret. Enfin, n'ayant qu'un seul écrou, nous avons du le coller (à la colle chaude) en l'ayant vissé sur la tige filetée afin de l'aligner parfaitement avec la tige de coulissement.
+
+![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/module_front.png)
+![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/module_back.png)
+![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/module_rail.png)
