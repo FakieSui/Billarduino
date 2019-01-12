@@ -147,6 +147,6 @@ Après la PixyPole, c'est au tour du module avec la pseudo-queue de billard d'ê
 
 Il faut donc intégrer le petit moteur step au module pour ce qui est de la rotation, avec le coulisseau parfaitement dans l'axe du pan du moteur. Pour cela, nous avons fait mes marquages et travaillé précisément au foret. Enfin, n'ayant qu'un seul écrou, nous avons du le coller (à la colle chaude) en l'ayant vissé sur la tige filetée afin de l'aligner parfaitement avec la tige de coulissement.
 
-![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/module_front.png)
-![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/module_back.png)
-![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/module_rail.png)
+![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/module_front.jpg)
+![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/module_back.jpg)
+![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/module_rail.jpg)
