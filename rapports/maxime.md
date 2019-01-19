@@ -32,3 +32,20 @@ Notre recherche est schématisé, légendé et expliqué sur les photos ci-desso
 ![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/calculs_angle_et_dist.jpg)
 
 ![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/schema_billard.jpg)
+
+Séance du lundi 14 janvier (4):
+
+Nous avons
+
+
+
+
+
+
+
+
+
+
+
+
+
