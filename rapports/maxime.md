@@ -17,7 +17,7 @@ Schéma de l'acquisition des différents objets:
 
 Séance du Lundi 10 décembre (2):
 
-Maintenant que nous avons en possession notre billard, nous avons déterminer l'objectif précis de notre projet.
+Maintenant que nous avons en possession notre billard, nous avons déterminé l'objectif précis de notre projet.
 L'objectif est de pouvoir mettre une bille objet n'importe où dans le billard et, grâce à une bille blanche que nous allons propulser sur la bille objet, la bille objet ira automatiquement dans le trou.
 Nous n'allons utiliser que deux trous sur les six trous du billard; deux trous d'extrémité.
 Nous nous sommes fixé comme objectif de mi-projet de prendre toujours la même position de la boule blanche.
@@ -41,19 +41,18 @@ Séance du lundi 14 janvier (4):
 
 Nous avons récupéré une grande partie du matériel nécéssaire à la conception du projet:
 
+-Nous avons récupéré un écrou, une prise à roulement et deux fixations pour la tige fileté.
+-Découpage de la tige coulisante pour envoyer l'impact avec un coulisseau.
 -Découpage de la tige fileté pour supporter le module de translation.
--Découpage de la tige coulisante pour envoyer l'impact.
--No
+-Un moteur pas à pas 12 Volt Nema 17 avec son coupleur.
 
+Séance du lundi 21 janvier (5):
 
+Nous avons fait marché les deux mouvements du module en même temps:
 
+-Rotation liée au moteur step pas à pas.
+-Rotation du moteur 12 Volt Nema 17 pour la translation du module.
 
+La vidéo est disponible sur Youtbe:
 
-
-
-
-
-
-
-
-
+https://l.facebook.com/l.php?u=https%3A%2F%2Fyoutu.be%2F6LOCkjsy5lc%3Ffbclid%3DIwAR3Ie5v8vhD0vJFhvqJDDo17zX51M3Z3ARZAUV6jA1S0ek3xUgT4aS15e9g&h=AT1oncO5of3jfe72L_MrOzdvRS-vd5e4HUM-eKo1rAzXpy1EL12cNJjnQ4FPRRS_v_jpcZr39g1MfWuUrc2OwaSe0BFyTQ2-txrkPcZSs4PFREN_O2J3BrRRwJOj6tNDHxTitw
