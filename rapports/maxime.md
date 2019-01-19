@@ -1,3 +1,7 @@
+Rôle personnel:
+
+Conception de la partie algorithmique du code qui permettra le calcul de l'angle du moteur pas à pas (moteur step). Et aussi le nombre de tours que devra effectuer le moteur 12 Volt Nema 17 qui correspondra en fait à la distance de parcourt de celui-ci.
+
 Séance du Lundi 3 Décembre (1)
 
 Lors de cette première scéance avec la pixycam, nous avons réussi à identifier des objets de différentes couleurs (rouge, bleu et jaune).
@@ -35,7 +39,11 @@ Notre recherche est schématisé, légendé et expliqué sur les photos ci-desso
 
 Séance du lundi 14 janvier (4):
 
-Nous avons
+Nous avons récupéré une grande partie du matériel nécéssaire à la conception du projet:
+
+-Découpage de la tige fileté pour supporter le module de translation.
+-Découpage de la tige coulisante pour envoyer l'impact.
+-No
 
 
 
