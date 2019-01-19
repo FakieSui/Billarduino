@@ -1,6 +1,6 @@
 Rôle personnel:
 
-Conception de la partie algorithmique du code qui permettra le calcul de l'angle du moteur pas à pas (moteur step). Et aussi le nombre de tours que devra effectuer le moteur 12 Volt Nema 17 qui correspondra en fait à la distance de parcourt de celui-ci.
+Conception de la partie algorithmique du code qui permettra le calcul de l'angle du moteur pas à pas. Et aussi le nombre de tours que devra effectuer le moteur 12 Volt Nema 17 qui correspondra en fait à la distance de parcourt de celui-ci.
 
 Séance du Lundi 3 Décembre (1)
 
@@ -42,15 +42,19 @@ Séance du lundi 14 janvier (4):
 Nous avons récupéré une grande partie du matériel nécéssaire à la conception du projet:
 
 -Nous avons récupéré un écrou, une prise à roulement et deux fixations pour la tige fileté.
+
 -Découpage de la tige coulisante pour envoyer l'impact avec un coulisseau.
+
 -Découpage de la tige fileté pour supporter le module de translation.
--Un moteur pas à pas 12 Volt Nema 17 avec son coupleur.
+
+-Un moteur 12 Volt Nema 17 avec son coupleur.
 
 Séance du lundi 21 janvier (5):
 
-Nous avons fait marché les deux mouvements du module en même temps:
+Nous avons fait marcher les deux mouvements du module en même temps:
 
--Rotation liée au moteur step pas à pas.
+-Rotation liée au moteur pas à pas.
+
 -Rotation du moteur 12 Volt Nema 17 pour la translation du module.
 
 La vidéo est disponible sur Youtbe:
