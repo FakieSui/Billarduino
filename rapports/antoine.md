@@ -150,3 +150,11 @@ Il faut donc intégrer le petit moteur step au module pour ce qui est de la rota
 ![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/module_front.jpg)
 ![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/module_back.jpg)
 ![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/module_rail.jpg)
+
+# Séance du Lundi 14 Janvier (5)
+
+Durant cette séance de présentation des projets, j'ai fixé les longeurs de cablâge nécessaire pour tous les composant du billard : en effet, il était primordial de recouper un câble pour le bus ISCP de l´arduino qui est relié à la PixyCam en haut de la perche ! De plus, j'ai soudé des câbles femelles sur les fils du moteur Nema 17 afin de facilitter les branchements sur la carte Arduino.
+
+Ayant fait marché l'ensemble des moteurs plus tôt dans la journée, j'ai été déçu de ne pas pouvoir montrer le potentiel actuel du billard et le réel avancement du projet : il ne reste désormais plus qu'a systematiser nos calculs et à traverser une longue phase de tests et d´ajustements ! Cependant, voici un extrait YOUTUBE des deux moteurs (translation et rotation) en marche :
+
+https://youtu.be/6LOCkjsy5lc
