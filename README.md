@@ -6,3 +6,7 @@ Self-playing Billiard based on Arduino &amp; PixyCam
 
 ## Authors
 Maxime Lafont-Trevisan & Antoine FACQ
+
+## Remerciements
+
+Merci à Lyonel Dahan pour son aide précieuse, et son fablab maison.
