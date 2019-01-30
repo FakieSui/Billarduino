@@ -158,3 +158,31 @@ Durant cette séance de présentation des projets, j'ai fixé les longeurs de ca
 Ayant fait marché l'ensemble des moteurs plus tôt dans la journée, j'ai été déçu de ne pas pouvoir montrer le potentiel actuel du billard et le réel avancement du projet : il ne reste désormais plus qu'a systematiser nos calculs et à traverser une longue phase de tests et d´ajustements ! Cependant, voici un extrait YOUTUBE des deux moteurs (translation et rotation) en marche :
 
 https://youtu.be/6LOCkjsy5lc
+
+# Travail durant la semaine de fin de semestre
+
+Durant cette semaine, j'ai rédigé le [programme final](https://github.com/AntoineFacq/Billarduino/tree/master/code/Billarduino) à uploader sur l'arduino. Celui ci est orienté objet, c'est à dire qu'il est découpé en classes qui peuvent hériter des propriétés d'autres classes.
+
+Par exemple, pour les classes relatives aux moteurs, TranlationMotor et RotationMotor héritent de Motor qui lui même hérite de Stepper. Le blabla n'étant jamais clair, voici comment on récapitule cela :
+```
+
+                          | --- <TranslationMotor>
+<Stepper> --- <Motor> --- |
+                          | --- <RotationMotor>
+```
+
+
+C'est donc sur ce modèle là que j'ai créé des classes qui permettent de définir un "Point", une "Scale" (échelle) à partir de deux points pour pouvoir ainsi faciliter nos calculs
+
+## Structure du programme
+- Initialisation des modules [Pixy, TranlationMotor, RotationMotor], des constantes et des longueurs en centimètres au sein du programme principal (Billarduino.ino)
+- Réalisation de l'acquisition (à l'aide de SPI.h et Pixy.h) uniquement si on détecte les 4 éléments nécessaires à savoir les deux billes et les deux gomettes.
+- Réorganisation des points de l'échelle
+- Définition des points indispensables au calcul (comme le centre des deux poches) à partir de l'échelle
+- Application des calculs pour la trajectoire (L, PHI) qui correcpondent respectivement à la rotation et la translation
+
+Ainsi, à partir du signal de la camera, on se retrouve avec notre module prêt à faire feu !
+
+Cependant, ce qu'il reste désormais à faire est de tester tout cela. A noter que l'orientation objet du programme facilitera la corrction des erreurs et l'implémentation de fonctionnalité qui auraient pu être oubliées durant la rédaction initiale.
+
+Le code est disponible [ici](https://github.com/AntoineFacq/Billarduino/tree/master/code/Billarduino).
