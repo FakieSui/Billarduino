@@ -52,7 +52,7 @@ double woodWidth = 2; // Epaisseur de du rebord en bois
 double cushionWidth = 3; // Epaisseur de la bande
 double border = woodWidth + cushionWidth; // Epaisseur totale
 double moduleShiftX = 2;
-double moduledShiftY = 4;
+double moduleShiftY = 4;
 
 double internHeight = height - 2 * border;
 double internWidth = width - 2 * border;
@@ -110,11 +110,11 @@ void doAcquisition(uint16_t blocks) {
     switch (block.signature) {
       case 1: // Bille 1
         name = "Bille 1";
-        balls[0] = Point(block.x - origin.x, block.y block.x - origin.y);
+        balls[0] = Point(block.x - origin.x, block.y - origin.y);
         break;
       case 2: // Bille 2
         name = "Bille 2";
-        balls[1] = Point(block.x - origin.x, block.y block.x - origin.y);
+        balls[1] = Point(block.x - origin.x, block.y - origin.y);
         break;
       case 3: // sticker [1 ou 2]
         stickers[stickersCount] = Point(block.x, block.y);
@@ -145,14 +145,14 @@ void prepareStrike() {
   /*
      Defining holes positions
   */
-  Point firstHole = Point(origin.x + centToCart(border), origin.y + centToCart(border));
-  Point secondHole = Point(origin.x + centToCart(width - border), origin.y + centToCart(border));
+  Point firstHole = Point(origin.x + cartesianToCentimeter(border), origin.y + cartesianToCentimeter(border));
+  Point secondHole = Point(origin.x + cartesianToCentimeter(width - border), origin.y + cartesianToCentimeter(border));
   /*
      Determine which hole to aim
   */
 
   Point aimedHole;
-  if (balls[0].x < balls[1]) {
+  if (balls[0].x < balls[1].x) {
     aimedHole = firstHole;
   } else {
     aimedHole = secondHole;
@@ -161,19 +161,19 @@ void prepareStrike() {
   /*
      Determine GhostBall position
   */
-  Point ghostBall = Point((balls[0].x - aimedHole.x) * 2 * centToCart(ballRadius) / aimedHole.distanceTo(balls[0]),
-                          (balls[0].y - aimedHole.y) * 2 * centToCart(ballRadius) / aimedHole.distanceTo(balls[0]));
+  Point ghostBall = Point((balls[0].x - aimedHole.x) * 2 * cartesianToCentimeter(ballRadius) / aimedHole.distanceTo(balls[0]),
+                          (balls[0].y - aimedHole.y) * 2 * cartesianToCentimeter(ballRadius) / aimedHole.distanceTo(balls[0]));
 
   /*
      Determine cartesian position of the module
   */
 
-  Point moduleOrigin = Point(origin.x - centToCart(moduleShiftX), origin.y + centToCart(moduleShiftY));
+  Point moduleOrigin = Point(origin.x - cartesianToCentimeter(moduleShiftX), origin.y + cartesianToCentimeter(moduleShiftY));
 
   double phi = atan((ghostBall.x - balls[1].x) / (ghostBall.y - balls[1].y));
-  double l = cartToCent(tan(phi)*(moduleOrigin.y-ghostBall.y));
+  double l = centimeterToCartesian(tan(phi)*(moduleOrigin.y-ghostBall.y));
 
-  translationMotor.run(cartToCent(l + shiftDir*shift));
+  translationMotor.run(centimeterToCartesian(l));
   rotationMotor.run(phi);
 
 }
@@ -191,7 +191,7 @@ void defineScale() {
 }
 
 void defineOrigin() {
-  orgin.setPosition(stickers[0].x, stickers[0].y);
+  origin.setPosition(stickers[0].x, stickers[0].y);
 }
 
 double centimeterToCartesian(double d) {
