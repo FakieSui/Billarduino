@@ -186,3 +186,19 @@ Ainsi, à partir du signal de la camera, on se retrouve avec notre module prêt 
 Cependant, ce qu'il reste désormais à faire est de tester tout cela. A noter que l'orientation objet du programme facilitera la corrction des erreurs et l'implémentation de fonctionnalité qui auraient pu être oubliées durant la rédaction initiale.
 
 Le code est disponible [ici](https://github.com/AntoineFacq/Billarduino/tree/master/code/Billarduino).
+
+
+
+# Séance du Mercredi 06 Févrirer (6)
+
+Durant cette séance, j'ai pu résoudre toutes les erreurs du code pour que la compilation soit menée à bien. Grâce à l'IDE Arduino et la structuration du code, celui ci ne devrait pas oser de problèmes à l'exécution.
+
+Nous avons aussi réusiner la plateforme de maintient de la queue de billard et du coulisseau pour les raisons suivantes :
+- La plateforme s'était fendu lors de son usinage : cela ne posait fondamentalement pas de problème, mais doutant sur le degrès d'imprécision qu'elle apportait à l'ensemble, il était nécessaire de la refaire.
+- Le rebord de la plateforme devait de toute façon être raboté car il ne permettait pas la complète rotation du module en butée du billard. Pour faire simple, ça "touchait" le bord quand on faisait tourner le module.
+
+Le choix d'un bois de récupération plus approprié a permis de résoudre ce problème. Voici donc une photo de la nouvelle plateforme. On notera que j'ai aussi installé les elastiques de rappel pour propulser la queue de billard :
+
+![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/new_platform.jpg)
+
+De plus, nous avons créé une rallonge de 6 cables afin que le module puisse translater sur toute la longueur de la tige filetée.
