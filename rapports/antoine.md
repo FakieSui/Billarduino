@@ -189,7 +189,7 @@ Le code est disponible [ici](https://github.com/AntoineFacq/Billarduino/tree/mas
 
 
 
-# Séance du Mercredi 06 Févrirer (6)
+# Séance du Mercredi 06 Février (6)
 
 Durant cette séance, j'ai pu résoudre toutes les erreurs du code pour que la compilation soit menée à bien. Grâce à l'IDE Arduino et la structuration du code, celui ci ne devrait pas oser de problèmes à l'exécution.
 
@@ -202,3 +202,24 @@ Le choix d'un bois de récupération plus approprié a permis de résoudre ce pr
 ![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/new_platform.jpg)
 
 De plus, nous avons créé une rallonge de 6 cables afin que le module puisse translater sur toute la longueur de la tige filetée.
+
+# Séance du Mercredi 13 Février (7)
+
+J'ai pu vérifier que le nouveau câble de la PixyCam ne présentait pas de court-circuit. En effet, lors du changement du cordon pour un cordon bien plus grand (permettant a la PixyCam d'être perchée), il a fallu poinçoner le nouveau câble. Cette opération présente le risque de connecter de fils voisins. Ainsi vérifié, nous pouvons brancher la PixyCam en toute sécurité !
+
+Pour ce qui est des gomettes, nous avons taillé deux gomettes dans du Post-it rose afin d'avoir de meilleur éclat possible. Ainsi, aucun doute que la PixyCam le différencie du reste !
+
+![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/new_montage.jpg)
+
+La pièce réusinée à la séance précédente présentait le défaut de descendre la queue de billard un peu trop bas. Afin de gagner en stabilité et de palier à ce problème, nous avons rajouté une fine plaque sous le rail d'une longueur adéquate.
+
+Pour définitivement fixer le rail au billard, j'ai imaginé et réalisé un étau en bois qui rentre "en force" autour de la largeur du billard.
+
+
+![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/new_plank.jpg)
+
+Ainsi, nous avons pu fixer et donc rendre constantes plusieurs mesures que nous pourrons facilement inscrire dans le code !
+
+Côté Arduino, nous avons réussi à uploader le programme sur l'Arduino sans erreur.
+
+Pour la prochaine séance de travail, il nous faudra régler le prolème des gomettes qui sortent du cadrage de la PixyCam ! EN effet, celle ci a une focale très limitée qui nécessite beaucoup de recul. Il faudra donc modifier le code pour prendre en compte ces petites modifications
