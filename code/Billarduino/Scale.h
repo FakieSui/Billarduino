@@ -1,8 +1,8 @@
-#define CENTIMETERS 40.0
+#define CENTIMETERS 56.45
 
 class Scale {
   public:
-    Point points[2];
+    Point points[2]; 
     bool isDefined;
     int distance = 0;
 

@@ -46,13 +46,14 @@ Point origin;
 */
 
 // Billard
-double width = 31.6; // Largeur du billard
-double height = 51.5; // Longeur du billard
-double woodWidth = 2; // Epaisseur de du rebord en bois
-double cushionWidth = 3; // Epaisseur de la bande
+double width = 31.55; // Largeur du billard
+double height = 51.30; // Longeur du billard
+double woodWidth = 1.25; // Epaisseur de du rebord en bois
+double cushionWidth = 2.75; // Epaisseur de la bande
 double border = woodWidth + cushionWidth; // Epaisseur totale
 double moduleShiftX = 2;
 double moduleShiftY = 4;
+double stickerShift = 2.3;
 
 double internHeight = height - 2 * border;
 double internWidth = width - 2 * border;
@@ -145,8 +146,8 @@ void prepareStrike() {
   /*
      Defining holes positions
   */
-  Point firstHole = Point(origin.x + cartesianToCentimeter(border), origin.y + cartesianToCentimeter(border));
-  Point secondHole = Point(origin.x + cartesianToCentimeter(width - border), origin.y + cartesianToCentimeter(border));
+  Point firstHole = Point(origin.x + centimeterToCartesian(border), origin.y + centimeterToCartesian(border));
+  Point secondHole = Point(origin.x + centimeterToCartesian(width - border), origin.y + centimeterToCartesian(border));
   /*
      Determine which hole to aim
   */
@@ -187,11 +188,15 @@ void reorderStickers() {
 }
 
 void defineScale() {
-  scale.setPoints(stickers[0], stickers[1]);
+  x1 = stickers[0].x + stickerShift;
+  x2 = stickers[1].x + stickerShift;
+  y1 = stickers[0].y + stickerShift;
+  y2 = stickers[1].y + stickerShift;
+  scale.setPoints(Point(x1, y1), Point(x2, y2));
 }
 
 void defineOrigin() {
-  origin.setPosition(stickers[0].x, stickers[0].y);
+  origin.setPosition(stickers[0].x- + centimeterToCartesian(stickerShift), stickers[0].y + centimeterToCartesian(stickerShift));
 }
 
 double centimeterToCartesian(double d) {
