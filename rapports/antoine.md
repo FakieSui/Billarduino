@@ -3,6 +3,7 @@
 - Programmation de l'Arduino pour faire le lien entre l'acquisition video et les moteurs
 - Construction de la PixyPerche (featuring Lyonnel Dahan)
 - Construction du module + rail (featuring Lyonnel Dahan)
+- Mise en lien soft-hardware
 
 # Séance du Lundi 3 Décembre (1)
 
@@ -223,3 +224,30 @@ Ainsi, nous avons pu fixer et donc rendre constantes plusieurs mesures que nous 
 Côté Arduino, nous avons réussi à uploader le programme sur l'Arduino sans erreur.
 
 Pour la prochaine séance de travail, il nous faudra régler le prolème des gomettes qui sortent du cadrage de la PixyCam ! EN effet, celle ci a une focale très limitée qui nécessite beaucoup de recul. Il faudra donc modifier le code pour prendre en compte ces petites modifications
+
+# Séance du Mercredi 27 Mars (8)
+
+À partir de cette séance, il ne nous reste plus qu'à travailler sur la mise en fonctionnement du software (code avec le hardware). Voici les problèmes rencontrés durant cette phase :
+
+- A cause des caprices de constraste et de luminosité de la PixyCAM, nous sommes obligés de passer énormément de temps à trouver un réglage à peine potable avec l'éclairage ambiant.
+- Le programme affiche parfaitement les positions des différents éléments sur le billard (Bille 1, Bille 2 et Gomette 1) mais pas les informations de la gomette 2, auquel moment il se fige.
+
+Pour ce qui est des gomettes, nous travaillons désormais avec des gomettes blabches que la PixyCam détecte plus facilement.
+
+Après avoir ponctuellement surmonté le premier point, je m´intéresse à la deuxième erreur. Grâce à forum.arduino.cc, je m'en rends compte que je peux résoudre ce "problème" en rajoutant un delay d'au moins 100ms. Ainsi, une majeur partie du programme est débuggée.
+
+En avancant progressivement le long de mon code avec des messages de débug, je me rends compte que tout ce passe bien y compris les calculs théoriques de ce que doivent parcourir les moteurs sauf le moment de faire tourner les moteurs :
+les prints se sectionnent et l'ARDUINO redémarre !!! (on le voit au Serial qui indique "Starting..." à nouveau)
+
+En effet, dans l´architecturation de mon programme objet, j'ai séparé, rappellons le, les classes moteurs de la manière suivante :
+
+```
+
+                          | --- <TranslationMotor>
+<Stepper> --- <Motor> --- |
+                          | --- <RotationMotor>
+
+
+```
+
+Ainsi, je suis actuellement toujours en train de débugger l'héritage de la méthode step() au sein de mes classes...
