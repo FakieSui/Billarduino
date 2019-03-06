@@ -22,6 +22,7 @@ Stepper rotationMotor(ROTATION_STEPS, IN1, IN2, IN3, IN4);
 /*
    Translation Motor
 */
+#define THREAD 3
 #include "TranslationMotor.h"
 
 #define TRANSLATION_STEPS 200
@@ -56,6 +57,7 @@ double height = 51.30; // Longeur du billard
 double woodWidth = 1.25; // Epaisseur de du rebord en bois
 double cushionWidth = 2.75; // Epaisseur de la bande
 double border = woodWidth + cushionWidth; // Epaisseur totale
+double holeShift = 4.8; // Décalage du trou
 double moduleShiftX = 2; // Position d'origine du module en X
 double moduleShiftY = 4; // Position d'origine du module en Y
 double stickerShift = 2.3; // Décallage du centre de la gomette par rapport à l'angle
@@ -160,49 +162,111 @@ void doAcquisition(uint16_t blocks) {
 }
 
 void prepareStrike() {
+
+  Serial.print("scale: ");
+  delay(100);
+  Serial.println(56.45);
+  delay(100);
+  Serial.println(cartesianToCentimeter(stickers[0].distanceTo(stickers[1])));
+  delay(100);
+
+
+  
   /*
      Defining holes positions
   */
-  Point firstHole = Point(origin.x + centimeterToCartesian(border), origin.y + centimeterToCartesian(border));
-  Point secondHole = Point(origin.x + centimeterToCartesian(width - border), origin.y + centimeterToCartesian(border));
+  Point firstHole = Point(origin.x + centimeterToCartesian(holeShift), origin.y + centimeterToCartesian(holeShift));
+  Point secondHole = Point(origin.x + centimeterToCartesian(holeShift), origin.y + centimeterToCartesian(width - holeShift));
+
+  Serial.println("firstHole");
+  delay(100);
+  firstHole.toString();
+
+  Serial.println("secondHole");
+  delay(100);
+  secondHole.toString();
+
   /*
      Determine which hole to aim
   */
 
   Point aimedHole;
-  if (balls[0].x < balls[1].x) {
+  if (balls[0].y < balls[1].y) {
     aimedHole = firstHole;
   } else {
     aimedHole = secondHole;
   }
 
+  Serial.println("aimedHole");
   delay(100);
+  aimedHole.toString();
+  
   /*
      Determine GhostBall position
   */
   Point ghostBall = Point((balls[0].x - aimedHole.x) * 2 * centimeterToCartesian(ballRadius) / aimedHole.distanceTo(balls[0]),
                           (balls[0].y - aimedHole.y) * 2 * centimeterToCartesian(ballRadius) / aimedHole.distanceTo(balls[0]));
+  
+
+  Serial.println("ghostBall");
   delay(100);
+  ghostBall.toString();
+  
   /*
      Determine cartesian position of the module
   */
 
   Point moduleOrigin = Point(origin.x - centimeterToCartesian(moduleShiftX), origin.y + centimeterToCartesian(moduleShiftY));
   delay(100);
+
+  
+  Serial.println("moduleOrigin");
+  delay(100);
+  moduleOrigin.toString();
+  
+  
   double phi = atan((ghostBall.x - balls[1].x) / (ghostBall.y - balls[1].y));
   double l = cartesianToCentimeter(tan(phi) * (moduleOrigin.y - ghostBall.y));
-  Serial.print(l)
-  Serial.print(phi)
-  translationMotor.step(l);
-  rotationMotor.step(phi);
-  // translationMotor.run(l);
-  // rotationMotor.run(phi);
+
+  
+  Serial.print("l: ");
+  delay(100);
+  Serial.println(l);
+  delay(100);
+  Serial.print("phi: ");
+  delay(100);
+  Serial.println(phi);
+  delay(100);
+
+
+  // TRANSLATION //
+  double rotations = l / THREAD;
+  double transStepsToRun = round(TRANSLATION_STEPS * rotations);
+  translationMotor.step(transStepsToRun);
+
+  Serial.print("Translation: ");
+  delay(100);
+  Serial.println(transStepsToRun);
+  delay(100);
+  
+  delay(1000);
+
+  // ROTATION //
+
+  double radianAngle = round(phi) % round(2 * PI);
+  double rotStepsToRun = round(radianAngle * ROTATION_STEPS / 2 * PI); // Règle de trois pour savoir combien de pas parcourir pour un angle en radian donné
+  rotationMotor.step(rotStepsToRun);
+
+  Serial.print("Rotation: ");
+  delay(100);
+  Serial.println(rotStepsToRun);
+  delay(100);
 
   delay(10000);
 
-  translationMotor.step(-l);
-  rotationMotor.step(-phi); 
-  
+  translationMotor.step(-transStepsToRun);
+  rotationMotor.step(-rotStepsToRun);
+
   // translationMotor.returnToDefaultPosition();
   // rotationMotor.returnToDefaultPosition();
 }
@@ -226,8 +290,8 @@ void defineScale() {
 }
 
 void defineOrigin() {
-  double x = stickers[0].x + centimeterToCartesian(stickerShift);
-  double y = stickers[0].y + centimeterToCartesian(stickerShift);
+  double x = stickers[0].x - centimeterToCartesian(stickerShift);
+  double y = stickers[0].y - centimeterToCartesian(stickerShift);
   origin.setPosition(x, y);
 }
 

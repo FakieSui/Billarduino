@@ -33,4 +33,16 @@ class Point {
     double distanceTo(Point point) {
       return sqrt((this->x - point.x) ^ 2 + (this->y - point.y) ^ 2);
     }
+
+    void toString() {
+      Serial.print("x: ");
+      delay(100);
+      Serial.print(this->x);
+      delay(100);
+      Serial.print(", y: ");
+      delay(100);
+      Serial.println(this->y);
+      delay(100);
+    }
+
 };
