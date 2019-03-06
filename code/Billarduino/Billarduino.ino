@@ -2,6 +2,8 @@
    Billarduino Main
 */
 
+boolean debug = true;
+
 /*
    Rotation Motor
 */
@@ -13,7 +15,9 @@
 #define IN3 4
 #define IN4 5
 
-RotationMotor rotationMotor(ROTATION_STEPS, IN1, IN2, IN3, IN4);
+// RotationMotor rotationMotor(ROTATION_STEPS, IN1, IN2, IN3, IN4);
+
+Stepper rotationMotor(ROTATION_STEPS, IN1, IN2, IN3, IN4);
 
 /*
    Translation Motor
@@ -24,7 +28,8 @@ RotationMotor rotationMotor(ROTATION_STEPS, IN1, IN2, IN3, IN4);
 #define DIR  6
 #define STEP 7
 
-TranslationMotor translationMotor(TRANSLATION_STEPS, DIR, STEP);
+// TranslationMotor translationMotor(TRANSLATION_STEPS, DIR, STEP);
+Stepper translationMotor(TRANSLATION_STEPS, DIR, STEP);
 
 /*
    PixyCam
@@ -51,12 +56,12 @@ double height = 51.30; // Longeur du billard
 double woodWidth = 1.25; // Epaisseur de du rebord en bois
 double cushionWidth = 2.75; // Epaisseur de la bande
 double border = woodWidth + cushionWidth; // Epaisseur totale
-double moduleShiftX = 2;
-double moduleShiftY = 4;
-double stickerShift = 2.3;
+double moduleShiftX = 2; // Position d'origine du module en X
+double moduleShiftY = 4; // Position d'origine du module en Y
+double stickerShift = 2.3; // Décallage du centre de la gomette par rapport à l'angle
 
-double internHeight = height - 2 * border;
-double internWidth = width - 2 * border;
+double internHeight = height - 2 * border; // Largeur interne
+double internWidth = width - 2 * border; // Largeur externe
 
 // Billes
 double ballRadius = 2.3;
@@ -76,8 +81,8 @@ double cartToCent;
 
 void setup()
 {
-  Serial.begin(9600);
-  Serial.print("Starting...\n");
+  Serial.begin(19200);
+  Serial.println("Starting...");
 
   pixy.init(); // Initialisation de la PixyCam
 }
@@ -90,7 +95,7 @@ void loop()
     if (blocks == 4) { // Nous avons probablement détecté les deux billes et et les deux stickers
       i++;
       if (i % 25 == 0) {
-        Serial.print("Acquisition in progress...");
+        Serial.println("Acquisition in progress...");
         doAcquisition(blocks); // On lance le processus d'acquisition
       }
     }
@@ -102,10 +107,12 @@ void loop()
 //// BILLARDUINO API ////
 
 void doAcquisition(uint16_t blocks) {
-  Serial.print("Acquisition in progress...");
+  Serial.println("Acquisition in progress...");
+  delay(100);
   int stickersCount = 0;
 
   for (int j = 0; j < blocks; j++) {
+    delay(100);
     String name = "";
     Block block = pixy.blocks[j];
     switch (block.signature) {
@@ -120,25 +127,35 @@ void doAcquisition(uint16_t blocks) {
       case 3: // sticker [1 ou 2]
         stickers[stickersCount] = Point(block.x, block.y);
         stickersCount++;
-        name = "Stickers " + stickersCount;
+        //        name = "Stickers " + stickersCount;
+        name = "Stickers";
         break;
     }
     if (name != "") {
       Serial.print(name);
+      delay(100);
       Serial.print(" at x: ");
+      delay(100);
       Serial.print(block.x - origin.x);
+      delay(100);
       Serial.print(", y: ");
+      delay(100);
       Serial.println(block.y - origin.y);
+      delay(100);
     } else {
-      Serial.print("Error during acqusition! Are there all the elements required?");
+      Serial.println("Error during acqusition! Are there all the elements required?");
+      delay(100);
     }
   }
+
   if (stickersCount == 2 and balls[0].isDefined() and balls[1].isDefined()) { // Vérifions si on a bien repéré les deux billes et les deux stickers pour valider l'acquisition
+
     reorderStickers(); // On réordonne l'ordre des stickers
     defineScale();
-    defineOrigin();
     acquisition = true; // On termine la phase d'acquisition (tout s'est bien passé)
-    Serial.print("Acquisition done!");
+    defineOrigin();
+    Serial.println("Acquisition done!");
+    delay(100);
   }
 }
 
@@ -159,24 +176,35 @@ void prepareStrike() {
     aimedHole = secondHole;
   }
 
+  delay(100);
   /*
      Determine GhostBall position
   */
-  Point ghostBall = Point((balls[0].x - aimedHole.x) * 2 * cartesianToCentimeter(ballRadius) / aimedHole.distanceTo(balls[0]),
-                          (balls[0].y - aimedHole.y) * 2 * cartesianToCentimeter(ballRadius) / aimedHole.distanceTo(balls[0]));
-
+  Point ghostBall = Point((balls[0].x - aimedHole.x) * 2 * centimeterToCartesian(ballRadius) / aimedHole.distanceTo(balls[0]),
+                          (balls[0].y - aimedHole.y) * 2 * centimeterToCartesian(ballRadius) / aimedHole.distanceTo(balls[0]));
+  delay(100);
   /*
      Determine cartesian position of the module
   */
 
-  Point moduleOrigin = Point(origin.x - cartesianToCentimeter(moduleShiftX), origin.y + cartesianToCentimeter(moduleShiftY));
-
+  Point moduleOrigin = Point(origin.x - centimeterToCartesian(moduleShiftX), origin.y + centimeterToCartesian(moduleShiftY));
+  delay(100);
   double phi = atan((ghostBall.x - balls[1].x) / (ghostBall.y - balls[1].y));
-  double l = centimeterToCartesian(tan(phi)*(moduleOrigin.y-ghostBall.y));
+  double l = cartesianToCentimeter(tan(phi) * (moduleOrigin.y - ghostBall.y));
+  Serial.print(l)
+  Serial.print(phi)
+  translationMotor.step(l);
+  rotationMotor.step(phi);
+  // translationMotor.run(l);
+  // rotationMotor.run(phi);
 
-  translationMotor.run(centimeterToCartesian(l));
-  rotationMotor.run(phi);
+  delay(10000);
 
+  translationMotor.step(-l);
+  rotationMotor.step(-phi); 
+  
+  // translationMotor.returnToDefaultPosition();
+  // rotationMotor.returnToDefaultPosition();
 }
 
 void reorderStickers() {
@@ -188,23 +216,27 @@ void reorderStickers() {
 }
 
 void defineScale() {
-  x1 = stickers[0].x + stickerShift;
-  x2 = stickers[1].x + stickerShift;
-  y1 = stickers[0].y + stickerShift;
-  y2 = stickers[1].y + stickerShift;
+  double x1 = stickers[0].x;
+  double x2 = stickers[1].x;
+  double y1 = stickers[0].y;
+  double y2 = stickers[1].y;
   scale.setPoints(Point(x1, y1), Point(x2, y2));
+  centToCart = scale.getCentToCart();
+  cartToCent = scale.getCartToCent();
 }
 
 void defineOrigin() {
-  origin.setPosition(stickers[0].x- + centimeterToCartesian(stickerShift), stickers[0].y + centimeterToCartesian(stickerShift));
+  double x = stickers[0].x + centimeterToCartesian(stickerShift);
+  double y = stickers[0].y + centimeterToCartesian(stickerShift);
+  origin.setPosition(x, y);
 }
+
 
 double centimeterToCartesian(double d) {
   if (acquisition) {
     return d * centToCart;
   } else {
     Serial.print("Error: Please acquisitionate first!");
-    exit(0);
   }
 }
 
@@ -213,12 +245,8 @@ double cartesianToCentimeter(double d) {
     return d * cartToCent;
   } else {
     Serial.print("Error: Please acquisitionate first!");
-    exit(0);
   }
 }
-
-
-
 
 
 

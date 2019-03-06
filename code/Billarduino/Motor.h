@@ -20,13 +20,17 @@ class Motor : Stepper {
       int pin2 = p2;
     }
     // Override Stepper step(int steps)
+    /*
     void step(int steps) {
-      step(steps);
+      this->step(steps);
+      delay(1000);
       this->achievedDistance += steps;
     }
+    */
 
     void returnToDefaultPosition() {
-      step(-this->achievedDistance);
+      this->step(-this->achievedDistance);
+      delay(1000);
     }
 };
 #endif

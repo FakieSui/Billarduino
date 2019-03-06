@@ -14,15 +14,22 @@ class RotationMotor : Motor {
       steps = sp;
     }
 
+/*
     void run(double angle) {
+    
       double radianAngle = round(angle) % round(2 * PI);
       double stepsToRun = round(radianAngle * this->steps / 2 * PI); // Règle de trois pour savoir combien de pas parcourir pour un angle en radian donné
+      Serial.print("mos30");
+      delay(100);
       this->step(stepsToRun);
+      delay(1000);
     }
 
     // Override Motor returnToDefaultPostion()
     void returnToDefaultPosition() {
-      step(-(this->achievedDistance % this->steps)); // Inutile de faire des tours pour rien, il suffit du décalage minimum
+      this->step(-(this->achievedDistance % this->steps)); // Inutile de faire des tours pour rien, il suffit du décalage minimum
+      delay(1000);
     }
+    */
 };
 #endif
