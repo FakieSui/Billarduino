@@ -225,7 +225,7 @@ Côté Arduino, nous avons réussi à uploader le programme sur l'Arduino sans e
 
 Pour la prochaine séance de travail, il nous faudra régler le prolème des gomettes qui sortent du cadrage de la PixyCam ! EN effet, celle ci a une focale très limitée qui nécessite beaucoup de recul. Il faudra donc modifier le code pour prendre en compte ces petites modifications
 
-# Séance du Mercredi 27 Mars (8)
+# Séance du Mercredi 27 Février (8)
 
 À partir de cette séance, il ne nous reste plus qu'à travailler sur la mise en fonctionnement du software (code avec le hardware). Voici les problèmes rencontrés durant cette phase :
 
@@ -251,3 +251,41 @@ En effet, dans l´architecturation de mon programme objet, j'ai séparé, rappel
 ```
 
 Ainsi, je suis actuellement toujours en train de débugger l'héritage de la méthode step() au sein de mes classes...
+
+
+# Séance du Mercredi 6 Mars (9)
+
+Durant cette séance en isoloir pour se protéger des variations de lumière (qui rappelons le perdent complètement la PixyCam), nous avons travaillé avec beaucoup de débug, c'est à dire en affichant le maximum d'informations venant de l'Arduino (et indirectement de la PixyCam). Ceci est primordial pour tracker les erreurs relatives à tous les calculs que l'on manipule lors de la préparation du tir. Voici un exemple de ce que l'on peut obtenir :
+
+```
+Starting...
+Acquisition in progress...
+Acquisition in progress...
+Bille 1 at x: 184, y: 113
+Bille 2 at x: 57, y: 81
+Stickers at x: 8, y: 15
+Stickers at x: 312, y: 191
+Acquisition done!
+firstHole
+x: 22, y: 29
+secondHole
+x: 22, y: 166
+aimedHole
+x: 22, y: 166
+ghostBall
+x: 59, y: 74
+moduleOrigin
+x: 205, y: -18
+l: -121.33
+phi: -1.25
+Translation: -156657.00
+Rotation: 101.00
+
+```
+
+
+Le débug que j'ai implémenté au code trace toutes les étapes de la préparation du tir dans l'ordre logique.
+
+Très rapidement, nous avions pu déceler un problème lors de l'établissement de l'échelle qui faussait tous les calculs.
+
+En fin de séance, la queue de billard semble avoir le bon angle mais la translation n'est pas encore fonctionnelle (le module ne se décalle pas asssez)
