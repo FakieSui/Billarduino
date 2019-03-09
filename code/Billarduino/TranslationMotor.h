@@ -1,7 +1,7 @@
 #ifndef TRANSLATIONMOTOR_H
 #define TRANSLATIONMOTOR_H
 
-#define THREAD 3
+//#define THREAD 3
 #include "Motor.h"
 
 class TranslationMotor : Motor {

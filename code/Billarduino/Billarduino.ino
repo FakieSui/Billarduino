@@ -10,10 +10,10 @@ boolean debug = true;
 #include "RotationMotor.h"
 
 #define ROTATION_STEPS 64
-#define IN1 2
-#define IN2 3
+#define IN1 3
+#define IN2 5
 #define IN3 4
-#define IN4 5
+#define IN4 2
 
 // RotationMotor rotationMotor(ROTATION_STEPS, IN1, IN2, IN3, IN4);
 
@@ -22,7 +22,7 @@ Stepper rotationMotor(ROTATION_STEPS, IN1, IN2, IN3, IN4);
 /*
    Translation Motor
 */
-#define THREAD 3
+#define THREAD 0.128
 #include "TranslationMotor.h"
 
 #define TRANSLATION_STEPS 200
@@ -30,7 +30,7 @@ Stepper rotationMotor(ROTATION_STEPS, IN1, IN2, IN3, IN4);
 #define STEP 7
 
 // TranslationMotor translationMotor(TRANSLATION_STEPS, DIR, STEP);
-Stepper translationMotor(TRANSLATION_STEPS, DIR, STEP);
+//Stepper translationMotor(TRANSLATION_STEPS, DIR, STEP);
 
 /*
    PixyCam
@@ -53,20 +53,20 @@ Point origin;
 
 // Billard
 double width = 31.55; // Largeur du billard
-double height = 51.30; // Longeur du billard
+double height = 51.30; // doubleeur du billard
 double woodWidth = 1.25; // Epaisseur de du rebord en bois
 double cushionWidth = 2.75; // Epaisseur de la bande
 double border = woodWidth + cushionWidth; // Epaisseur totale
 double holeShift = 4.8; // Décalage du trou
-double moduleShiftX = 2; // Position d'origine du module en X
-double moduleShiftY = 4; // Position d'origine du module en Y
-double stickerShift = 2.3; // Décallage du centre de la gomette par rapport à l'angle
+double moduleShiftX = 2.6; // Position d'origine du module en X
+double moduleShiftY = 3; // Position d'origine du module en Y
+double stickerShift = 2.4; // Décallage du centre de la gomette par rapport à l'angle
 
 double internHeight = height - 2 * border; // Largeur interne
 double internWidth = width - 2 * border; // Largeur externe
 
 // Billes
-double ballRadius = 2.3;
+double ballRadius = 2.4 / 2;
 
 
 #include "Scale.h"
@@ -85,6 +85,12 @@ void setup()
 {
   Serial.begin(19200);
   Serial.println("Starting...");
+
+  pinMode(STEP, OUTPUT);
+  pinMode(DIR, OUTPUT);
+
+  //  translationMotor.setSpeed(500);
+  rotationMotor.setSpeed(20);
 
   pixy.init(); // Initialisation de la PixyCam
 }
@@ -165,13 +171,13 @@ void prepareStrike() {
 
   Serial.print("scale: ");
   delay(100);
-  Serial.println(56.45);
+  Serial.println(scale.getDistance());
   delay(100);
-  Serial.println(cartesianToCentimeter(stickers[0].distanceTo(stickers[1])));
+  Serial.println(centimeterToCartesian(56.45));
   delay(100);
 
 
-  
+
   /*
      Defining holes positions
   */
@@ -191,7 +197,7 @@ void prepareStrike() {
   */
 
   Point aimedHole;
-  if (balls[0].y < balls[1].y) {
+  if (balls[0].y > balls[1].y) {
     aimedHole = firstHole;
   } else {
     aimedHole = secondHole;
@@ -200,35 +206,36 @@ void prepareStrike() {
   Serial.println("aimedHole");
   delay(100);
   aimedHole.toString();
-  
+
   /*
      Determine GhostBall position
   */
-  Point ghostBall = Point((balls[0].x - aimedHole.x) * 2 * centimeterToCartesian(ballRadius) / aimedHole.distanceTo(balls[0]),
-                          (balls[0].y - aimedHole.y) * 2 * centimeterToCartesian(ballRadius) / aimedHole.distanceTo(balls[0]));
-  
+  Point ghostBall = Point(aimedHole.x + (balls[1].x - aimedHole.x) * (1 + centimeterToCartesian(ballRadius) / aimedHole.distanceTo(balls[1])),
+                          aimedHole.y + (balls[1].y - aimedHole.y) * (1 + centimeterToCartesian(ballRadius) / aimedHole.distanceTo(balls[1])));
+
 
   Serial.println("ghostBall");
   delay(100);
   ghostBall.toString();
-  
+
   /*
      Determine cartesian position of the module
   */
 
-  Point moduleOrigin = Point(origin.x - centimeterToCartesian(moduleShiftX), origin.y + centimeterToCartesian(moduleShiftY));
+  Point moduleOrigin = Point(origin.x + centimeterToCartesian(width + moduleShiftX), origin.y - centimeterToCartesian(moduleShiftY));
   delay(100);
 
-  
+
   Serial.println("moduleOrigin");
   delay(100);
   moduleOrigin.toString();
   
-  
-  double phi = atan((ghostBall.x - balls[1].x) / (ghostBall.y - balls[1].y));
-  double l = cartesianToCentimeter(tan(phi) * (moduleOrigin.y - ghostBall.y));
+  double rapport = (double) ((double) (balls[0].y - ghostBall.y) / (double) (balls[0].x - ghostBall.x));
 
-  
+  double phi = atan(rapport);
+  double l = cartesianToCentimeter(ghostBall.y + tan(phi) * (centimeterToCartesian(height + moduleShiftX) - ghostBall.x));
+
+
   Serial.print("l: ");
   delay(100);
   Serial.println(l);
@@ -241,20 +248,21 @@ void prepareStrike() {
 
   // TRANSLATION //
   double rotations = l / THREAD;
-  double transStepsToRun = round(TRANSLATION_STEPS * rotations);
-  translationMotor.step(transStepsToRun);
+  double transStepsToRun = -abs(round(TRANSLATION_STEPS * rotations));
 
   Serial.print("Translation: ");
   delay(100);
   Serial.println(transStepsToRun);
   delay(100);
-  
+
+  translateSteps(transStepsToRun);
+
   delay(1000);
 
   // ROTATION //
 
-  double radianAngle = round(phi) % round(2 * PI);
-  double rotStepsToRun = round(radianAngle * ROTATION_STEPS / 2 * PI); // Règle de trois pour savoir combien de pas parcourir pour un angle en radian donné
+  double radianAngle = phi;
+  double rotStepsToRun = -abs(round(radianAngle * ROTATION_STEPS / 2 * PI)); // Règle de trois pour savoir combien de pas parcourir pour un angle en radian donné
   rotationMotor.step(rotStepsToRun);
 
   Serial.print("Rotation: ");
@@ -264,11 +272,13 @@ void prepareStrike() {
 
   delay(10000);
 
-  translationMotor.step(-transStepsToRun);
   rotationMotor.step(-rotStepsToRun);
+  translateSteps(-transStepsToRun);
+  //  translationMotor.step(-transStepsToRun);
 
   // translationMotor.returnToDefaultPosition();
   // rotationMotor.returnToDefaultPosition();
+  delay(10000);
 }
 
 void reorderStickers() {
@@ -312,6 +322,22 @@ double cartesianToCentimeter(double d) {
   }
 }
 
+
+
+// Need this method for translation as Stepper.step runs until a limited maximum value
+void translateSteps(long steps) {
+  if (steps > 0) {
+    digitalWrite(DIR, HIGH);
+  } else {
+    digitalWrite(DIR, LOW);
+  }
+  for (long x = 0; x < abs(steps); x++) {
+    digitalWrite(STEP, LOW);
+    delayMicroseconds(800);
+    digitalWrite(STEP, HIGH);
+    delayMicroseconds(800);
+  }
+}
 
 
 

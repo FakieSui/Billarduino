@@ -6,7 +6,7 @@ class Point {
       setPosition(-1, -1);
     }
 
-    Point(float x, float y) {
+    Point(double x, double y) {
       setPosition(x, y);
     }
 
@@ -17,21 +17,21 @@ class Point {
       return false;
     }
 
-    void setPosition(float x, float y) {
+    void setPosition(double x, double y) {
       setX(x);
       setY(y);
     }
 
-    void setX(float x) {
+    void setX(double x) {
       this->x = x;
     }
 
-    void setY(float y) {
+    void setY(double y) {
       this->y = y;
     }
 
     double distanceTo(Point point) {
-      return sqrt((this->x - point.x) ^ 2 + (this->y - point.y) ^ 2);
+      return sqrt(pow(this->x - point.x, 2) + pow(this->y - point.y, 2));
     }
 
     void toString() {
