@@ -126,11 +126,11 @@ void doAcquisition(uint16_t blocks) {
     switch (block.signature) {
       case 1: // Bille 1
         name = "Bille 1";
-        balls[0] = Point(block.x - origin.x, block.y - origin.y);
+        balls[0] = Point(block.x, block.y);
         break;
       case 2: // Bille 2
         name = "Bille 2";
-        balls[1] = Point(block.x - origin.x, block.y - origin.y);
+        balls[1] = Point(block.x , block.y);
         break;
       case 3: // sticker [1 ou 2]
         stickers[stickersCount] = Point(block.x, block.y);
@@ -144,11 +144,11 @@ void doAcquisition(uint16_t blocks) {
       delay(100);
       Serial.print(" at x: ");
       delay(100);
-      Serial.print(block.x - origin.x);
+      Serial.print(block.x);
       delay(100);
       Serial.print(", y: ");
       delay(100);
-      Serial.println(block.y - origin.y);
+      Serial.println(block.y);
       delay(100);
     } else {
       Serial.println("Error during acqusition! Are there all the elements required?");
@@ -210,8 +210,8 @@ void prepareStrike() {
   /*
      Determine GhostBall position
   */
-  Point ghostBall = Point(aimedHole.x + (balls[1].x - aimedHole.x) * (1 + centimeterToCartesian(ballRadius) / aimedHole.distanceTo(balls[1])),
-                          aimedHole.y + (balls[1].y - aimedHole.y) * (1 + centimeterToCartesian(ballRadius) / aimedHole.distanceTo(balls[1])));
+  Point ghostBall = Point(aimedHole.x + (balls[1].x - aimedHole.x) * (1 + centimeterToCartesian(ballRadius)*2 / aimedHole.distanceTo(balls[1])),
+                          aimedHole.y + (balls[1].y - aimedHole.y) * (1 + centimeterToCartesian(ballRadius)*2 / aimedHole.distanceTo(balls[1])));
 
 
   Serial.println("ghostBall");
