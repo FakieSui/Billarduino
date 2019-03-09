@@ -1,6 +1,5 @@
-const int Pas = 3;
-const int Dir = 2;
 int i;
+
 
 #include <Stepper.h>
 
@@ -17,12 +16,10 @@ int i;
 #define IN4 2
 
 Stepper rotation(ROTATION_STEPS, IN1, IN2, IN3, IN4);
-Stepper translation(TRANSLATION_STEPS, DIR, STEP)
 
 void setup() {
   Serial.begin(9600);
   rotation.setSpeed(15);
-  translation.setSpeed(15);
 }
 
 void loop() {
@@ -30,7 +27,7 @@ void loop() {
     int s1 = 100;
     int s2 = 1000;
 
-    translation.step(s1);
+    translateSteps(s1);
     Serial.print("ROTATION ENDED");
     rotation.step(s2);
     Serial.print("TRANSLATION ENDED");
@@ -40,7 +37,15 @@ void loop() {
     ////////////////////////////////////
     /// Origial code from arduino.cc ///
     ////////////////////////////////////
-    
+    static int i = 0;
+    int j;
+    uint16_t blocks;
+    char buf[32];
+
+    // grab blocks!
+    blocks = pixy.getBlocks();
+
+    // If there are detect blocks, print them!
     if (blocks)
     {
       i++;
@@ -51,7 +56,7 @@ void loop() {
       {
         sprintf(buf, "Detected %d:\n", blocks);
         Serial.print(buf);
-        for (int j = 0; j < blocks; j++)
+        for (j = 0; j < blocks; j++)
         {
           sprintf(buf, "  block %d: ", j);
           Serial.print(buf);
@@ -59,5 +64,20 @@ void loop() {
         }
       }
     }
+  }
+}
+
+// Need this method for translation as Stepper.step runs until a limited maximum value
+void translateSteps(long steps) {
+  if (steps > 0) {
+    digitalWrite(DIR, HIGH);
+  } else {
+    digitalWrite(DIR, LOW);
+  }
+  for (long x = 0; x < abs(steps); x++) {
+    digitalWrite(STEP, LOW);
+    delayMicroseconds(800);
+    digitalWrite(STEP, HIGH);
+    delayMicroseconds(800);
   }
 }
