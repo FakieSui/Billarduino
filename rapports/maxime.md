@@ -21,7 +21,7 @@ Maintenant que nous avons en possession notre billard, nous avons déterminé l'
 L'objectif est de pouvoir mettre une bille objet n'importe où dans le billard et, grâce à une bille blanche que nous allons propulser sur la bille objet, la bille objet ira automatiquement dans le trou.
 Nous n'allons utiliser que deux trous sur les six trous du billard; deux trous d'extrémité.
 Nous nous sommes fixé comme objectif de mi-projet de prendre toujours la même position de la boule blanche.
-En revanche, pour la fin de projet, le bille blanche pourra être placée sur une ligne le long de la largeur du billard.
+En revanche, pour la fin de projet, la bille blanche pourra être placée sur une ligne le long de la largeur du billard.
 
 ![PHOTO](https://github.com/AntoineFacq/Billarduino/blob/master/rapports/images/billard_initial.jpg)
 
