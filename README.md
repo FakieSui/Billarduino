@@ -17,4 +17,4 @@ https://github.com/AntoineFacq/Billarduino/blob/master/rapports/Rapport%20du%20p
 
 ## Remerciements
 
-Merci à Lyonel Dahan pour son aide précieuse, et son fablab maison.
+Merci à Lyonel Dahan pour son aide précieuse, et son FabLab' maison.
