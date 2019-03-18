@@ -8,8 +8,12 @@ Self-playing Billiard based on Arduino &amp; PixyCam
 
 https://docs.google.com/presentation/d/1xzkSd1WUeLzVVLRjQoTh607-S0mNEbuHv8M70IEcq6Y/edit?usp=sharing
 
+## Rapport du projet
+
+https://github.com/AntoineFacq/Billarduino/blob/master/rapports/Rapport%20du%20projet.pdf
+
 ## Authors
-Maxime Lafont-Trevisan & Antoine FACQ
+[Antoine FACQ](https://github.com/AntoineFacq/) & [Maxime Lafont-Trevisan](https://github.com/MaximeLafont/)
 
 ## Remerciements
 
